@@ -35,12 +35,12 @@ public class LcUserServiceImpl implements LcUserService {
 
     @Override
     public Boolean addOneUser(LcUser lcUser) {
-//        String name = lcUser.getName();
-//        String pattern = "[\u4e00-\u9fa5]+";
-//        boolean isMatch =  Pattern.matches(pattern, name);
-//        if (!isMatch){
-//            throw new CustomException(JsonResultCode.CODE_NAME_ONLY_CN);
-//        }
+        String name = lcUser.getName();
+        String pattern = "[\u4e00-\u9fa5]+";
+        boolean isMatch =  Pattern.matches(pattern, name);
+        if (!isMatch){
+            throw new CustomException(JsonResultCode.CODE_NAME_ONLY_CN);
+        }
         log.info("新增一个用户,用户信息为:{}",lcUser);
         return lcUserMapper.addOneUser(lcUser)>0;
     }

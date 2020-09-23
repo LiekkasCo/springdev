@@ -38,5 +38,7 @@ public class BaseController {
     public JsonResult fail(JsonResultCode jsonResultCode){
         return getResult(jsonResultCode,null);
     }
-
+    public JsonResult fail(JsonResultCode jsonResultCode,Object content){
+        return getResult(jsonResultCode,content);
+    }
 }

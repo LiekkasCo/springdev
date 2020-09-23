@@ -33,12 +33,6 @@ public class UserController extends BaseController {
 
     @PostMapping("/user/add/one")
     public JsonResult addOne(@RequestBody LcUser lcUser){
-        String name = lcUser.getName();
-        String pattern = "[\u4e00-\u9fa5]+";
-        boolean isMatch =  Pattern.matches(pattern, name);
-        if (!isMatch){
-            return fail(JsonResultCode.CODE_NAME_ONLY_CN);
-        }
         Boolean result = service().lcUserService.addOneUser(lcUser);
         if (result){
             return success();
