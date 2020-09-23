@@ -1,16 +1,14 @@
 package com.lc.springdev.controller;
 
 import com.lc.springdev.data.JsonResult;
+import com.lc.springdev.data.JsonResultCode;
 import com.lc.springdev.entity.LcUser;
 import com.lc.springdev.mapper.LcUserMapper;
-import com.lc.springdev.service.LcUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * user controller
@@ -31,5 +29,21 @@ public class UserController extends BaseController {
     public JsonResult getOne(@PathVariable long id){
         LcUser oneUser = service().lcUserService.getOne(id);
         return success(oneUser);
+    }
+
+    @PostMapping("/user/add/one")
+    public JsonResult addOne(@RequestBody LcUser lcUser){
+        String name = lcUser.getName();
+        String pattern = "[\u4e00-\u9fa5]+";
+        boolean isMatch =  Pattern.matches(pattern, name);
+        if (!isMatch){
+            return fail(JsonResultCode.CODE_NAME_ONLY_CN);
+        }
+        Boolean result = service().lcUserService.addOneUser(lcUser);
+        if (result){
+            return success();
+        }else {
+            return fail();
+        }
     }
 }

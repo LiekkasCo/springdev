@@ -23,4 +23,10 @@ public class JsonResult {
         this.content = content;
         return this;
     }
+
+    public JsonResult fail(JsonResultCode jsonResultCode){
+        this.code = jsonResultCode.getCode();
+        this.message = jsonResultCode.getMessage();
+        return this;
+    }
 }

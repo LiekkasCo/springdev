@@ -23,4 +23,11 @@ public interface LcUserService {
      * @return one user info
      */
     LcUser getOne(long id);
+
+    /**
+     * add one user
+     * @param lcUser user info
+     * @return true or false
+     */
+    Boolean addOneUser(LcUser lcUser);
 }
