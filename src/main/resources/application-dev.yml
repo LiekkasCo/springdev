@@ -10,6 +10,10 @@ spring:
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
 
 picPath: E:\XXX\YYY\
 

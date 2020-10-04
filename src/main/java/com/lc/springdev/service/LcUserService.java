@@ -1,6 +1,7 @@
 package com.lc.springdev.service;
 
 
+import com.github.pagehelper.PageInfo;
 import com.lc.springdev.entity.LcUser;
 
 import java.util.List;
@@ -30,4 +31,10 @@ public interface LcUserService {
      * @return true or false
      */
     Boolean addOneUser(LcUser lcUser);
+
+    /**
+     * get user page info
+     * @return user page list
+     */
+    PageInfo<LcUser> getUserPageInfo();
 }

@@ -1,5 +1,7 @@
 package com.lc.springdev.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lc.springdev.data.JsonResultCode;
 import com.lc.springdev.data.exception.CustomException;
 import com.lc.springdev.entity.LcUser;
@@ -43,5 +45,17 @@ public class LcUserServiceImpl implements LcUserService {
         }
         log.info("新增一个用户,用户信息为:{}",lcUser);
         return lcUserMapper.addOneUser(lcUser)>0;
+    }
+
+    @Override
+    public PageInfo<LcUser> getUserPageInfo() {
+        //1.执行分页
+        PageHelper.startPage(1,5);
+        //2.执行查询
+        List<LcUser> list = lcUserMapper.findAll();
+        //3.封装pageInfo对象
+        PageInfo<LcUser> pageInfo = new PageInfo<>(list);
+        //4.输出
+        return pageInfo;
     }
 }
