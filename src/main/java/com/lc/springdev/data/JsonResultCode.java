@@ -16,7 +16,7 @@ public enum JsonResultCode {
      */
     CODE_SUCCESS(0,"成功"),
     CODE_FAIL(-1,"操作失败"),
-    CODE_NAME_ONLY_CN(10001,"姓名只能为汉字");
+    CODE_NAME_NOT_NULL(10001,"姓名不能为空");
 
     private int code;
     private String message;

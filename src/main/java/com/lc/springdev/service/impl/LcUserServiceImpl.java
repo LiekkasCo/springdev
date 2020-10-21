@@ -8,6 +8,7 @@ import com.lc.springdev.entity.LcUser;
 import com.lc.springdev.mapper.LcUserMapper;
 import com.lc.springdev.service.LcUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +41,8 @@ public class LcUserServiceImpl implements LcUserService {
         String name = lcUser.getName();
         String pattern = "[\u4e00-\u9fa5]+";
         boolean isMatch =  Pattern.matches(pattern, name);
-        if (!isMatch){
-            throw new CustomException(JsonResultCode.CODE_NAME_ONLY_CN);
+        if (StringUtils.isBlank(lcUser.getName())){
+            throw new CustomException(JsonResultCode.CODE_NAME_NOT_NULL);
         }
         log.info("新增一个用户,用户信息为:{}",lcUser);
         return lcUserMapper.addOneUser(lcUser)>0;

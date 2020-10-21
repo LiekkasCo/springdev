@@ -19,8 +19,8 @@ public class JspController extends BaseController{
     public String index(Model model, HttpServletRequest request){
         List<LcUser> userInfo = service().lcUserService.getAll();
         LcUser oneUser = service().lcUserService.getOne(1);
-//        model.addAttribute("userInfo",userInfo);
-        request.setAttribute("userInfo",oneUser);
+//        model.addAttribute("userInfo",oneUser);
+        request.setAttribute("userInfo",userInfo);
         return "index";
     }
 }
