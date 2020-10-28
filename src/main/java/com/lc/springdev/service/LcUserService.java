@@ -37,4 +37,11 @@ public interface LcUserService {
      * @return user page list
      */
     PageInfo<LcUser> getUserPageInfo();
+
+    /**
+     * get one user
+     * @param name name
+     * @return one user info
+     */
+    LcUser getOneByRedis(String name);
 }

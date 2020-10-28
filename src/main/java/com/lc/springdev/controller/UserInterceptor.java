@@ -18,8 +18,9 @@ public class UserInterceptor implements HandlerInterceptor {
         log.info("拦截器");
         log.info("URI:{}",request.getRequestURI());
         if (request.getRequestURI().contains("/user")){
-            log.info("拦截到了用户接口，停止");
-            return false;
+//            log.info("拦截到了用户接口，停止");
+            log.info("拦截到了用户接口，但暂时放开");
+            return true;
         }else {
             log.info("不是用户接口，继续");
             return true;

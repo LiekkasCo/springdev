@@ -4,6 +4,7 @@ import com.lc.springdev.data.JsonResult;
 import com.lc.springdev.data.JsonResultCode;
 import com.lc.springdev.entity.LcUser;
 import com.lc.springdev.mapper.LcUserMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,5 +40,12 @@ public class UserController extends BaseController {
         }else {
             return fail();
         }
+    }
+
+
+    @PostMapping("/user/one/redis")
+    public JsonResult getOne(@RequestParam("name") String name){
+        LcUser oneUser = service().lcUserService.getOneByRedis(name);
+        return success(oneUser);
     }
 }
