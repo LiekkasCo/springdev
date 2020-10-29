@@ -19,7 +19,7 @@ import java.io.UnsupportedEncodingException;
  * @author liangchen
  */
 @Slf4j
-//@Component
+@Component
 //@RabbitListener(queues = {RabbitConfig.QUEUE_TEST},ackMode ="MANUAL")
 
 public class TestListener {
