@@ -21,6 +21,15 @@ spring:
     #最大建立连接等待时间。如果超过此时间将接到异常
     maxWaitMillis: -1
 
+  #rabbitMq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        acknowledge-mode: manual
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

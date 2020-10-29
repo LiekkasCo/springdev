@@ -14,4 +14,6 @@ public class BaseService {
     public LcUserService lcUserService;
     @Autowired
     public JedisManager jedisManager;
+    @Autowired
+    public RabbitService rabbitService;
 }
